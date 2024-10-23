@@ -1,0 +1,17 @@
+# Ignore __pycache__ directories
+__pycache__/
+*.py[cod]
+
+# Ignore media files (images, videos, etc.)
+media/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.ogg
+*.mp3
