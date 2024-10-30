@@ -1,44 +1,30 @@
 from manim import *
 
-# Constants for font and colors
-FONT_PATH = "./fonts/Excalifont-Regular.woff2"
-FONT_NAME = "Excalifont"
-BG_COLOR = "#374151"
-TEXT_COLOR = WHITE
-HIGHLIGHT_COLOR = YELLOW
-MATCH_COLOR = GREEN
-MISMATCH_COLOR = RED
-WINDOW_COLOR = BLUE
+from utils.base_visualization import BaseVisualization
 
 
-class NaiveSearch(Scene):
+class NaiveSearch(BaseVisualization):
     """
     A Manim animation that visualizes the Naive Search Algorithm.
     """
-
-    def setup_scene(self, title_text, title_font_size=48):
-        """
-        Sets up the scene with a title and a background color.
-        """
-        register_font(FONT_PATH)
-        self.camera.background_color = BG_COLOR
-        title = Text(
-            title_text, font=FONT_NAME, font_size=title_font_size, color=TEXT_COLOR
-        ).to_edge(UP, buff=0.5)
-        self.add(title)
 
     def display_labeled_text(self, label, content, position, font_size=36, buff=0.5):
         """
         Utility to create and display labeled text
         """
         label_mobject = (
-            Text(label, font=FONT_NAME, font_size=font_size, color=TEXT_COLOR)
+            Text(label, font=self.FONT_NAME, font_size=font_size, color=self.TEXT_COLOR)
             .to_edge(LEFT, buff=buff)
             .shift(position)
         )
         content_mobject = VGroup(
             *[
-                Text(char, font=FONT_NAME, font_size=font_size + 12, color=TEXT_COLOR)
+                Text(
+                    char,
+                    font=self.FONT_NAME,
+                    font_size=font_size + 12,
+                    color=self.TEXT_COLOR,
+                )
                 for char in content
             ]
         )
@@ -52,7 +38,7 @@ class NaiveSearch(Scene):
         """
         Animates the comparison of a character between text and pattern.
         """
-        color = MATCH_COLOR if match else MISMATCH_COLOR
+        color = self.MATCH_COLOR if match else self.MISMATCH_COLOR
         self.play(
             text_mobject[index_text].animate.set_color(color),
             pattern_mobject[index_pattern].animate.set_color(color),
@@ -105,7 +91,7 @@ class NaiveSearch(Scene):
             if matched:
                 # Display match found if the entire pattern matches
                 match_text = (
-                    Text("Match Found!", font=FONT_NAME, color=TEXT_COLOR)
+                    Text("Match Found!", font=self.FONT_NAME, color=self.TEXT_COLOR)
                     .scale(0.75)
                     .next_to(text_mobject, RIGHT * 2)
                 )
