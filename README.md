@@ -18,6 +18,7 @@ Understanding algorithms can be challenging, especially without a good visual re
 The repository currently includes visualizations of the following algorithms:
 
 - Naive Text Search
+- Creation of the LPS table for KMP search
 
 ### Installation
 
