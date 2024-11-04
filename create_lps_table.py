@@ -12,6 +12,9 @@ class CreateLPSTable(BaseVisualization):
     def create_labeled_array(
         self, elements, label_text, position, shift_val=ORIGIN, buff=0
     ):
+        """
+        Creates a labeled array with a title and elements for visualization.
+        """
         array = VisualArray(
             elements,
             font_name=self.FONT_NAME,
@@ -28,14 +31,17 @@ class CreateLPSTable(BaseVisualization):
         return array, label
 
     def highlight_prefix_suffix(self, array, prefix_len, current_idx):
+        """
+        Highlights the prefix and suffix in the pattern array as part of the LPS computation.
+        """
         for k in range(prefix_len):
             self.play(
-                array.get_highlight_element_animation(k, color=self.MATCH_COLOR),
+                array.get_change_element_color_animation(k, color=self.MATCH_COLOR),
                 run_time=0.1,
             )
         for k in range(current_idx - prefix_len + 1, current_idx + 1):
             self.play(
-                array.get_highlight_element_animation(k, color=self.ACCENT_COLOR),
+                array.get_change_element_color_animation(k, color=self.ACCENT_COLOR),
                 run_time=0.1,
             )
 
@@ -58,7 +64,7 @@ class CreateLPSTable(BaseVisualization):
             lps_array.reset_colors()
 
             self.play(
-                pattern_array.get_highlight_element_animation(
+                pattern_array.get_change_element_color_animation(
                     i, color=self.HIGHLIGHT_COLOR
                 )
             )

@@ -36,8 +36,8 @@ class VisualArray(VGroup):
             self.element_cells.add(element_cell)
 
         # Arrange the cells to form a continuous array
-        self.element_cells.arrange(RIGHT, buff=0)  
-        self.add(self.element_cells) 
+        self.element_cells.arrange(RIGHT, buff=0)
+        self.add(self.element_cells)
 
         self.default_color = element_color
 
@@ -54,9 +54,9 @@ class VisualArray(VGroup):
         new_text.move_to(self.element_cells[index][0].get_center())
         return ReplacementTransform(self.element_cells[index][1], new_text)
 
-    def get_highlight_element_animation(self, index, color):
+    def get_change_element_color_animation(self, index, color):
         """
-        Returns an animation to highlight an element at the specified index.
+        Returns an animation to change color of an element at the specified index.
         """
         return self.element_cells[index][1].animate.set_color(color)
 

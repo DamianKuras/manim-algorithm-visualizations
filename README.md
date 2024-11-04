@@ -19,6 +19,7 @@ The repository currently includes visualizations of the following algorithms:
 
 - Naive Text Search
 - Creation of the LPS table for KMP search
+- Knuth-Morris-Pratt (KMP) text search Algorithm
 
 ### Installation
 
